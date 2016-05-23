@@ -1,0 +1,207 @@
+﻿@font-face {
+    font-family: 'Bud Hand';
+    src: url(Budhand.ttf);
+}
+
+
+body, html, div {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.bggradient {
+    background: #0645af;
+    background: -moz-linear-gradient(top, #0645af 0%, #16bee3 70%);
+    background: -webkit-linear-gradient(top, #0645af 0%,#16bee3 70%);
+    background: linear-gradient(to bottom, #0645af 0%,#16bee3 70%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0645af', endColorstr='#16bee3',GradientType=0 );
+    background-attachment: fixed;
+}
+
+h1.title {
+    font-family: 'Open Sans Condensed';
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    margin: 20px 0 0 0;
+    padding: 10px 0 0 0;
+    text-shadow: initial;
+}
+
+span.subtitle {
+    font-size: 12px;
+    color: #ddd;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open sans';
+    text-shadow: initial;
+}
+
+.biglogo {
+    margin: 60px auto 0px auto;
+    width: 25%;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 300px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+div.list {
+    display: block;
+    margin: 0 20px;
+}
+
+    div.list input {
+        width: 100%;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.4);
+        color: #fff;
+        font-family: 'Open Sans';
+        font-weight: 300;
+        font-size: 16px;
+        outline: none;
+        border: none;
+        margin: 0;
+    }
+
+        div.list input:first-child {
+            border-radius: 3px 3px 0 0;
+        }
+
+        div.list input:last-child {
+            border-radius: 0 0 3px 3px;
+        }
+
+        div.list input:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255, 255, 0.2);
+        }
+
+    div.list span.account {
+        color: #fff;
+        font-family: 'Open Sans Condensed';
+        display: block;
+        font-size: 12px;
+        text-align: center;
+    }
+
+.username, .password {
+}
+
+.ui-page-theme-a .ui-btn {
+    border: none !important;
+    padding: 0.2em 0;
+    font-size: 20px;
+    font-family: 'Open Sans Condensed' !important;
+    text-shadow: 1px 1px 5px #000;
+    outline: none !important;
+}
+
+.ui-header {
+    background: #2872c5;
+    background: -moz-linear-gradient(top, #2872c5 0%, #2677c7 100%);
+    background: -webkit-linear-gradient(top, #2872c5 0%,#2677c7 100%);
+    background: linear-gradient(to bottom, #2872c5 0%,#2677c7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2872c5', endColorstr='#2677c7',GradientType=0 );
+    font-family: 'Open Sans Condensed';    
+    
+    text-shadow: none !important;
+    border: none;
+    color: #fff !important;
+    font-weight: 300 !important;
+}
+
+.ui-title {
+    padding: 1.5em 0 .7em 0 !important;
+}
+
+.ui-footer {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border: none !important;
+}
+
+.ui-bar-inherit {
+    background-color: transparent !important;
+    color: #fff !important;
+    text-shadow: initial !important;
+}
+
+.ui-li-divider {
+    font-weight: 300 !important;
+    font-family: 'Open Sans Condensed' !important;
+    font-size: 20px !important;
+}
+
+.ui-listview {
+    padding: 10px !important;
+}
+
+ .ui-listview>.ui-li-divider {
+     border: none !important;
+ }
+
+ .ui-body-inherit {
+     border: none;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+ }
+
+.ui-listview>.ui-li-static {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #fff !important;
+    text-shadow: 1px 1px 5px #000 !important;
+    font-weight: 300 !important;
+    font-family: 'Open Sans Condensed';
+    border: initial;
+    font-size: 20px;
+}
+
+.ui-listview li:nth-child(2) {
+    border-radius: 5px 5px 0 0 !important ;
+}
+
+.ui-listview li:last-child {
+    border-radius: 0 0 5px 5px !important ;
+}
+
+
+
+a.ui-btn {
+    color: #fff !important;
+    font-weight: 300 !important;
+    font-family: 'Open Sans' !important;
+    background-color: transparent !important;
+    border: 1px solid #fff !important;
+}
+
+.myButton {
+    background-color: #2296E0;
+    color: #fff !important;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 300 !important;
+    padding: 8px 5px;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-family: 'Open Sans Condensed';
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: block;
+}
