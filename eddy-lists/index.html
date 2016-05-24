@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link href="js/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
     <link href="js/jquery.mobile.structure-1.4.5.css" rel="stylesheet" />
+    <link href="js/jquery.mobile.theme-1.4.5.css" rel="stylesheet" />
 
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
@@ -134,7 +135,10 @@
 
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
-                <a href="#dgNewList" data-position-to="window" data-transition="pop" class="ui-btn ui-btn-icon-top ui-icon-plus">Ajouter une liste</a>
+                <a href="#dgNewList" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-icon-top ui-icon-plus" data-transition="pop">Ajouter une liste</a>
+                <div data-role="popup" id="dgNewList" class="ui-content">
+                    Nom de la liste
+                </div>
             </div>
         </div>
     </div>
@@ -157,9 +161,7 @@
         </div>
     </div>
 
-    <div data-role="popup" id="dgNewList">
-        Nom de la liste
-    </div>
+
 
 </body>
 </html>
