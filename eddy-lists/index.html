@@ -135,9 +135,12 @@
 
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
-                <a href="#dgNewList" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-icon-top ui-icon-plus" data-transition="pop">Ajouter une liste</a>
+                <a href="#dgNewList" data-role="button" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-icon-top ui-icon-plus" data-transition="pop">Ajouter une liste</a>
                 <div data-role="popup" id="dgNewList" class="ui-content">
-                    Nom de la liste
+                    <h2>Ajouter une liste</h2>
+                    <p>Nom de la liste</p>
+                    <input type="text" id="edNewListName" />
+                    <a href="#" class="myButton" data-enhance="false" data-role="none">Enregistrer</a>
                 </div>
             </div>
         </div>

@@ -185,12 +185,12 @@ li a.ui-btn {
 
 
 
-a.ui-btn {
+.ui-footer a.ui-btn[data-role="button"] {
     color: #fff !important;
     font-weight: 300 !important;
     font-family: 'Open Sans' !important;
     background-color: transparent !important;
-    border: 1px solid #fff !important;
+    border: none !important;
 }
 
 
@@ -199,23 +199,23 @@ a.ui-btn {
 }
 
 .myButton {
-    background-color: #1F74CC;
+    background-color: #1F74CC !important;
     color: #fff !important;
-    text-decoration: none;
-    text-align: center;
+    text-decoration: none!important;
+    text-align: center!important;
     font-weight: 300 !important;
-    padding: 8px 5px;
-    text-transform: uppercase;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-family: 'Open Sans Condensed';
-    border-radius: 3px;
-    width: 100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
+    padding: 8px 5px !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    outline: none !important;
+    font-size: 20px !important;
+    font-family: 'Open Sans Condensed' !important;
+    border-radius: 3px !important;
+    width: 100% !important;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    display: block !important;
 }
 
 .ui-page-theme-a .ui-btn {
