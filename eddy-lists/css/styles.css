@@ -212,9 +212,9 @@ a.ui-btn {
     font-family: 'Open Sans Condensed';
     border-radius: 3px;
     width: 100%;
-    box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
     display: block;
 }
 
@@ -227,4 +227,9 @@ a.ui-btn {
 
 .ui-header-fixed a {
     margin-top: 18px !important;
+}
+
+.ui-popup-screen.in {
+    opacity: 0.3 !important;
+    background-color: #000;
 }
