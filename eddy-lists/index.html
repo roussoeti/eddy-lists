@@ -134,7 +134,7 @@
 
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
-                <a href="#dgNewList" class="ui-btn ui-btn-a ui-btn-icon-top ui-icon-plus">Ajouter une liste</a>
+                <a href="#dgNewList" data-position-to="window" data-transition="pop" class="ui-btn ui-btn-icon-top ui-icon-plus">Ajouter une liste</a>
             </div>
         </div>
     </div>
@@ -151,13 +151,13 @@
 
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
-                <a href="#" class="ui-btn ui-btn-a ui-btn-icon-top ui-icon-plus">Ajouter une item</a>
-                <a href="#" class="ui-btn ui-btn-a ui-btn-icon-top ui-icon-plus">Partager</a>
+                <a href="#" class="ui-btn ui-btn-icon-top ui-icon-plus">Ajouter une item</a>
+                <a href="#" class="ui-btn ui-btn-icon-top ui-icon-plus">Partager</a>
             </div>
         </div>
     </div>
 
-    <div data-role="page" data-dialog="true" id="dgNewList">
+    <div data-role="popup" id="dgNewList">
         Nom de la liste
     </div>
 
