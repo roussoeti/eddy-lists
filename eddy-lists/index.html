@@ -16,6 +16,7 @@
     <link href="js/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link href="js/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
+    <link href="js/jquery.mobile.structure-1.4.5.css" rel="stylesheet" />
 
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
@@ -90,7 +91,7 @@
 <body>
 
     <div data-role="page" id="paConnect" class="bggradient2">
-                
+
         <img src="img/logo.png" class="biglogo" />
         <h1 class="title">eddyLists</h1>
 
@@ -133,7 +134,7 @@
 
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
-                <a href="#">Ajouter</a>
+                <a href="#dgNewList" class="ui-btn ui-btn-a ui-btn-icon-top ui-icon-plus">Ajouter une liste</a>
             </div>
         </div>
     </div>
@@ -141,8 +142,6 @@
 
 
     <div data-role="page" id="paListItems" class="bggradient2">
-
-
         <div data-role="header" data-position="fixed">
             <h1>eddyLists</h1>
             <a href="#paListes" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-icon-carat-l ui-btn-icon-left" data-transition="flip">Mes listes</a>
@@ -150,12 +149,17 @@
 
         <ul data-role="listview" id="my-list-item"></ul>
 
-
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
-                <a href="#">Ajouter un item</a>
+                <a href="#" class="ui-btn ui-btn-a ui-btn-icon-top ui-icon-plus">Ajouter une item</a>
+                <a href="#" class="ui-btn ui-btn-a ui-btn-icon-top ui-icon-plus">Partager</a>
             </div>
         </div>
     </div>
+
+    <div data-role="page" data-dialog="true" id="dgNewList">
+        Nom de la liste
+    </div>
+
 </body>
 </html>
