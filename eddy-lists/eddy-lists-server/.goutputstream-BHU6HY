@@ -9,7 +9,7 @@ $listtype = mysqli_real_escape_string($link, $_POST['listtype']);
 
 if ($listtype == 'personal')
 	{
-	$fetch = mysqli_query($link, "SELECT lt.listname, lt.idlist 
+	$fetch = mysqli_query($link, "SELECT lt.listname 
 										     FROM lists lt
 												 LEFT JOIN accounts an
 													ON an.accountname = lt.accountname
@@ -20,8 +20,8 @@ if ($listtype == 'personal')
 	{
 		while ($row = mysqli_fetch_assoc($fetch)) 
 		{
-		echo  '<li class="ui-li-static ui-body-inherit"><a id="list-'.$row["idlist"].'" href="#paListItems" data-icon="arrow-r" data-role="none" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="flip">'; 
-		echo utf8_encode($row['listname']);
+		echo  '<li class="ui-li-static ui-body-inherit"><a href="#" data-icon="arrow-r" data-role="none" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-icon-carat-r">'; 
+		echo $row['listname'];
 		echo  "</li>";
 		}
 	}
@@ -36,7 +36,7 @@ if ($listtype == 'personal')
 else if ($listtype == 'shared')
 {
 
-	$fetch = mysqli_query($link, "SELECT lt.listname, lt.idlist 
+	$fetch = mysqli_query($link, "SELECT lt.listname 
 										     FROM sharedlists sl
 										       LEFT JOIN lists lt
 										       	ON lt.idlist = sl.idlist
@@ -50,8 +50,8 @@ else if ($listtype == 'shared')
 	{
 		while ($row = mysqli_fetch_assoc($fetch)) 
 		{
-		echo  '<li class="ui-li-static ui-body-inherit"><a id="list-'.$row["idlist"].'" href="#paListItems" data-icon="arrow-r" data-role="none" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="flip">'; 
-		echo utf8_encode($row['listname']);
+		echo  '<li class="ui-li-static ui-body-inherit"><a href="#" data-icon="arrow-r" data-role="none" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-icon-carat-r">'; 
+		echo $row['listname'];
 		echo  "</li>";
 		}
 	}
