@@ -13,16 +13,30 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 
-    <link href="js/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link href="js/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
-    <link href="js/jquery.mobile.structure-1.4.5.css" rel="stylesheet" />
-    <link href="js/jquery.mobile.theme-1.4.5.css" rel="stylesheet" />
-    
+
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <link href="js/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
+    <!-- <link href="js/jquery.mobile-1.4.5.min.css" rel="stylesheet" /> -->
+    <link href="js/jquery.mobile.structure-1.4.5.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+
     <!-- à transférer dans un fichier JS plus tard -->
     <script>
+        function getConnect() {
+            $.ajax({
+                url: 'eddy-lists-server/eddy-lists-connect.php',
+                type: 'post',
+                data: { accountname: $("#edUsername").val(), pwd: $("#edPwd").val() },
+                success: function (output) {
+                    alert(output);
+                }
+            });
+        }
+
+
+
         function getPersonalLists() {
             $.ajax({
                 url: 'eddy-lists-server/eddy-lists-getlists.php',
@@ -63,7 +77,7 @@
             $.ajax({
                 url: 'eddy-lists-server/eddy-lists-getitems.php',
                 type: 'post',
-                data: { accountname: 'etienne', pwd: 'q', idlist: $id },
+                data: { accountname: edUsername.value, pwd: edPwd.value, idlist: $id },
                 success: function (output) {
                     $('#my-list-item').html("<li data-role=\"list-divider\">Mes items</li>");
                     $('#my-list-item').append(output);
@@ -74,6 +88,9 @@
         }
 
         $(document).ready(function () {
+            $("#btnConnect").click(function () {
+                getConnect();
+            });
 
             $("#paListes").on("pagebeforeshow", function (event) {
                 getPersonalLists();
@@ -100,15 +117,15 @@
         <br />
         <br />
         <div class="list">
-            <input type="text" class="username" value="etienne" data-role="none" />
-            <input type="password" class="password" value="1234567890" data-role="none" />
+            <input type="text" class="username" value="etienne" data-role="none" id="edUsername"/>
+            <input type="password" class="password" value="1234567890" data-role="none" id="edPwd" />
         </div>
 
         <div class="list">
 
             <br />
             <br />
-            <a href="#paListes" data-role="none" class="myButton" data-transition="flip" id="btnLists">Suivant</a>
+            <a href="#paListes" data-role="none" class="myButton" data-transition="flip" id="btnConnect">Suivant</a>
         </div>
 
         <div class="list">

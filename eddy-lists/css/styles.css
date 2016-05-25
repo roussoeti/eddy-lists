@@ -219,10 +219,12 @@ li a.ui-btn {
 }
 
 .ui-page-theme-a .ui-btn {
+    background: initial !important;
     border: none !important;
     font-weight: 300 !important;
     text-shadow: initial !important;
     font-family: 'Open Sans Condensed';
+    color: #fff !important;
 }
 
 .ui-header-fixed a {
@@ -232,4 +234,13 @@ li a.ui-btn {
 .ui-popup-screen.in {
     opacity: 0.3 !important;
     background-color: #000;
+}
+
+
+.ui-listview > .ui-li-static {
+    border: initial !important;
+}
+
+.ui-listview > li:nth-child(2) {
+    border-radius: 5px 5px 0 0;
 }
