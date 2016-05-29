@@ -7,7 +7,7 @@ $pwd = mysqli_real_escape_string($link, $_POST['pwd']);
 $idlist = mysqli_real_escape_string($link, $_POST['idlist']);
 
 
-$fetch = mysqli_query($link, "SELECT it.itemname 
+$fetch = mysqli_query($link, "SELECT it.itemname, it.iditem 
 									     FROM items it
 									     	 LEFT JOIN lists lt
 									     	 	ON it.idlist = lt.idlist
@@ -15,19 +15,19 @@ $fetch = mysqli_query($link, "SELECT it.itemname
 												ON an.accountname = lt.accountname
 										  WHERE it.idlist = $idlist
 										  	 AND an.accountname IS NOT NULL
-										  	 AND an.pwd = '$pwd'"); 
+										  	 AND an.pwd = SHA1('$pwd')"); 
 if (mysqli_num_rows($fetch) > 0)
 {
 	while ($row = mysqli_fetch_assoc($fetch)) 
 	{
-	echo  '<li class="ui-li-static ui-body-inherit"><a id="list-'.$row["idlist"].'" href="#paListItems" data-icon="arrow-r" data-role="none" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-icon-carat-r">'; 
-	echo utf8_encode($row['listname']);
+	echo  '<li class="mylist">'; 
+	echo utf8_encode($row['itemname']);
 	echo  "</li>";
 	}
 }
 else
 {
-	echo  '<li class="ui-li-static ui-body-inherit">'; 
+	echo  '<li class="mylist">'; 
 	echo "Aucun item pour l'instant";
 	echo  "</li>";	
 }

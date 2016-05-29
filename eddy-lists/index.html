@@ -12,13 +12,10 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/jquery.mobile-1.4.5.min.js"></script>
-    <link href="js/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
-    <!-- <link href="js/jquery.mobile-1.4.5.min.css" rel="stylesheet" /> -->
-    <link href="js/jquery.mobile.structure-1.4.5.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 
 
@@ -30,7 +27,16 @@
                 type: 'post',
                 data: { accountname: $("#edUsername").val(), pwd: $("#edPwd").val() },
                 success: function (output) {
-                    alert(output);
+                    if (output == "100") {
+                        $("#paConnect").hide();
+                        $("#paListes").show();
+
+                        getPersonalLists();
+                        getSharedLists();
+                    }
+                    else {
+                        alert("Nom d'utilisateur ou mot de pases incorrect.");
+                    }
                 }
             });
         }
@@ -43,13 +49,10 @@
                 type: 'post',
                 data: { accountname: 'etienne', pwd: 'q', listtype: 'personal' },
                 success: function (output) {
-                    $('#my-personal-lists').html("<li data-role=\"list-divider\">Mes listes personnelles</li>");
-                    $('#my-personal-lists').append(output);
-                    $('#my-personal-lists').trigger('create');
-                    $('#my-personal-lists').listview('refresh');
+                    $('#my-personal-lists').html(output);
 
-                    $("#my-personal-lists a").click(function (e) {
-                        $("#paListItems").data("id", this.id);
+                    $("#my-personal-lists li").click(function (e) {
+                        showListItems(this.id);
                     });
                 }
             });
@@ -61,10 +64,9 @@
                 type: 'post',
                 data: { accountname: 'etienne', pwd: 'q', listtype: 'shared' },
                 success: function (output) {
-                    $('#my-shared-lists').html("<li data-role=\"list-divider\">Mes listes partagées</li>");
-                    $('#my-shared-lists').append(output);
-                    $('#my-shared-lists').trigger('create');
-                    $('#my-shared-lists').listview('refresh');
+
+                    $('#my-shared-lists').html(output);
+
 
                     $("#my-shared-lists a").click(function (e) {
                         $("#paListItems").data("id", this.id);
@@ -79,15 +81,40 @@
                 type: 'post',
                 data: { accountname: edUsername.value, pwd: edPwd.value, idlist: $id },
                 success: function (output) {
-                    $('#my-list-item').html("<li data-role=\"list-divider\">Mes items</li>");
-                    $('#my-list-item').append(output);
-                    $('#my-list-item').trigger('create');
-                    $('#my-list-item').listview('refresh');
+                    $('#my-list-item').html(output);
+
+                    $(".checkitem").click(function () {
+                        $(this).addClass("checkitemyes");
+                        $(this).html("<i class=\"material-icons\">done</i>");
+                    });
                 }
             });
         }
 
+        function showListItems(obj) {
+            var idlist = obj.replace("list-", "");
+            $("body > div").hide();
+
+            $("#paListItems h2").html($("#" + obj + " span.mylistname").text());
+            $('#my-list-item').html("");
+            $("#paListItems").show();
+
+            getItems(idlist);
+
+        }
+
+        function showLists() {
+            $("body > div").hide();
+            $("#paListes").show();
+            getPersonalLists();
+            getSharedLists();
+        }
+
         $(document).ready(function () {
+
+            $("body > div:not(:first-child)").hide();
+
+
             $("#btnConnect").click(function () {
                 getConnect();
             });
@@ -102,23 +129,22 @@
                 var myID = $(this).data("id").replace("list-", "");
                 getItems(myID);
             });
+
+            getConnect();
         });
     </script>
 
 </head>
 <body>
 
-    <div data-role="page" id="paConnect" class="bggradient2">
+    <div data-role="page" id="paConnect">
 
         <img src="img/logo.png" class="biglogo" />
-        <h1 class="title">eddyLists</h1>
 
-        <span class="subtitle">Votre liste qui vous suit partout !</span>
-        <br />
-        <br />
+
         <div class="list">
-            <input type="text" class="username" value="etienne" data-role="none" id="edUsername"/>
-            <input type="password" class="password" value="1234567890" data-role="none" id="edPwd" />
+            <input type="text" class="username" value="etienne" data-role="none" id="edUsername" />
+            <input type="password" class="password" value="q" data-role="none" id="edPwd" />
         </div>
 
         <div class="list">
@@ -137,19 +163,21 @@
 
 
 
-    <div data-role="page" id="paListes" class="bggradient2">
-        <div data-role="header" data-position="fixed">
-            <h1>eddyLists</h1>
-        </div>
+    <div data-role="page" id="paListes">
+        <header>
+            eddyList
+            <div class="ajouter">
+                <i class="material-icons menu">add</i>
+            </div>
+        </header>
 
-        <ul data-role="listview" id="my-personal-lists">
-            <li data-role="list-divider">Mes listes personnelles</li>
-        </ul>
+        <h2>Mes listes personnelles</h2>
+        <ul data-role="listview" id="my-personal-lists"></ul>
 
-        <ul data-role="listview" id="my-shared-lists">
-            <li data-role="list-divider">Mes listes partagées</li>
-        </ul>
+        <h2>Mes listes partagées</h2>
+        <ul data-role="listview" id="my-shared-lists"></ul>
 
+        <!--
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <a href="#dgNewList" data-role="button" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-icon-top ui-icon-plus" data-transition="pop">Ajouter une liste</a>
@@ -160,25 +188,25 @@
                     <a href="#" class="myButton" data-enhance="false" data-role="none">Enregistrer</a>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 
 
 
-    <div data-role="page" id="paListItems" class="bggradient2">
-        <div data-role="header" data-position="fixed">
-            <h1>eddyLists</h1>
-            <a href="#paListes" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-icon-carat-l ui-btn-icon-left" data-transition="flip">Mes listes</a>
-        </div>
+    <div data-role="page" id="paListItems">
+        <header>
+            <div class="retour" onclick="showLists();">
+                <i class="material-icons menu">chevron_left</i><span>Retour</span>
+            </div>
+            eddyList
+            <div class="ajouter">
+                <i class="material-icons menu">add</i>
+            </div>
+        </header>
 
+        <h2>Mes listes personnelles</h2>
         <ul data-role="listview" id="my-list-item"></ul>
 
-        <div data-role="footer" data-position="fixed">
-            <div data-role="navbar">
-                <a href="#" class="ui-btn ui-btn-icon-top ui-icon-plus">Ajouter une item</a>
-                <a href="#" class="ui-btn ui-btn-icon-top ui-icon-plus">Partager</a>
-            </div>
-        </div>
     </div>
 
 

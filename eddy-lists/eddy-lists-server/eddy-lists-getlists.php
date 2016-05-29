@@ -9,25 +9,30 @@ $listtype = mysqli_real_escape_string($link, $_POST['listtype']);
 
 if ($listtype == 'personal')
 	{
-	$fetch = mysqli_query($link, "SELECT lt.listname, lt.idlist 
+	$fetch = mysqli_query($link, "SELECT lt.listname, lt.idlist , lt.dateadded
 										     FROM lists lt
 												 LEFT JOIN accounts an
 													ON an.accountname = lt.accountname
 											  WHERE lt.accountname = '$accountname'
 											  	 AND an.accountname IS NOT NULL
-											  	 AND an.pwd = '$pwd'"); 
+											  	 AND an.pwd = SHA1('$pwd')"); 
 	if (mysqli_num_rows($fetch) > 0)
 	{
 		while ($row = mysqli_fetch_assoc($fetch)) 
 		{
-		echo  '<li class="ui-li-static ui-body-inherit"><a id="list-'.$row["idlist"].'" href="#paListItems" data-icon="arrow-r" data-role="none" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="flip">'; 
+		echo '<li class="mylist" id="list-'.$row["idlist"].'">';
+		echo '<span class="mylistname">'; 
 		echo utf8_encode($row['listname']);
+		echo '</span>';
+		echo '<span class="mylistdateadded">';
+		echo utf8_encode($row['dateadded']);
+		echo '</span>';
 		echo  "</li>";
 		}
 	}
 	else
 	{
-		echo  '<li class="ui-li-static ui-body-inherit">'; 
+		echo  '<li class="mylist">'; 
 		echo "Aucune liste pour l'instant";
 		echo  "</li>";	
 	}
@@ -36,7 +41,7 @@ if ($listtype == 'personal')
 else if ($listtype == 'shared')
 {
 
-	$fetch = mysqli_query($link, "SELECT lt.listname, lt.idlist 
+	$fetch = mysqli_query($link, "SELECT lt.listname, lt.idlist, lt.dateadded 
 										     FROM sharedlists sl
 										       LEFT JOIN lists lt
 										       	ON lt.idlist = sl.idlist
@@ -44,20 +49,25 @@ else if ($listtype == 'shared')
 													ON an.accountname = sl.sharedaccountname												
 											  WHERE sl.sharedaccountname = '$accountname'
 											  	 AND an.accountname IS NOT NULL
-											  	 AND an.pwd = '$pwd'"); 
+											  	 AND an.pwd = SHA1('$pwd')"); 
 
 	if (mysqli_num_rows($fetch) > 0)
 	{
 		while ($row = mysqli_fetch_assoc($fetch)) 
 		{
-		echo  '<li class="ui-li-static ui-body-inherit"><a id="list-'.$row["idlist"].'" href="#paListItems" data-icon="arrow-r" data-role="none" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="flip">'; 
+		echo '<li class="mylist" id="list-'.$row["idlist"].'">';
+		echo '<span class="mylistname">'; 
 		echo utf8_encode($row['listname']);
+		echo '</span>';
+		echo '<span class="mylistdateadded">';
+		echo utf8_encode($row['dateadded']);
+		echo '</span>';
 		echo  "</li>";
 		}
 	}
 	else
 	{
-		echo  '<li class="ui-li-static ui-body-inherit">'; 
+		echo  '<li class="mylist">'; 
 		echo "Aucune liste partagée pour l'instant";
 		echo  "</li>";
 	}	
