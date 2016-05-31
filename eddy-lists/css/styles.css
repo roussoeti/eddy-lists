@@ -124,23 +124,7 @@ input {
     padding: 3px;
 }
 
-.checkitem {
-    display: block;
-    position: relative;
-    margin-top: -38px;
-    font-size: 36px;
-    position: absolute;
-    right: 48px;
-    border:  1px solid #55769A;
-    width: 36px;
-    height: 36px;
-    border-radius: 42px;
-}
 
-.checkitemyes {
-    background-color: #55769A !important;
-    color: #fff;
-}
 
 .checkitemyes i {
     font-size: 24px;
@@ -165,12 +149,6 @@ input {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     display: block;
-}
-
-ul {
-    padding: 0;
-    margin: 0 -20px;
-    list-style-type: none;
 }
 
 .mylist {
@@ -381,3 +359,75 @@ li a.ui-btn {
 .ui-listview > li:nth-child(2) {
     border-radius: 5px 5px 0 0;
 }*/
+
+
+
+
+/* ====================================================== */
+/* STYLES POUR LES ITEMS                                  */
+/* ====================================================== */
+
+ul {
+    padding: 0;
+    margin: 0 24px 0 -20px;
+    list-style-type: none;
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #eee;
+}
+
+.my-list-item {
+    padding: 5px 0;
+    margin-right: 48px;
+}
+
+.my-list-item div.item-name {
+    display: block;
+    padding: 5px 0 5px 15px;
+    border-spacing: 0;
+    font-family: 'Lato';
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+.my-list-item > div.item-info {
+    padding: 0 15px 5px 15px;
+    display: table;
+}
+
+.my-list-item > div.item-info > i, .my-list-item > div.item-info > span  {
+    vertical-align: bottom;
+    display: table-cell;
+}
+
+.my-list-item span.my-itemdateadded, .my-list-item span.my-addedby {
+    font-size: 12px;
+    padding-right: 8px;
+}
+
+.my-list-item i {
+    font-size: 20px;
+    padding-right: 5px;
+}
+
+.checkitem {
+    display: block;
+    position: relative;
+    margin-top: -20px;
+    font-size: 36px;
+    position: absolute;
+    right: 48px;
+    border:  1px solid #55769A;
+    width: 32px;
+    height: 32px;
+    border-radius: 42px;
+}
+
+.checkitemyes {
+    background-color: #55769A !important;
+    color: #fff;
+}

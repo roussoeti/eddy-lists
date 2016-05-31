@@ -80,7 +80,27 @@
                 url: 'eddy-lists-server/eddy-lists-getitems.php',
                 type: 'post',
                 data: { accountname: edUsername.value, pwd: edPwd.value, idlist: $id },
-                success: function (output) {
+                success: function (response) {
+                    response = JSON.stringify(response);
+                    var items = $.parseJSON(response);
+
+
+                    var output = "";
+                    for (var i in items)
+                    {
+                        output = "<li class=\"my-list-item\">";
+                        output += "<div class=\"item-name\">" + items[i].itemname + "</div>";
+                        output += "<span class=\"checkitem\"></span>";
+                        output += "<div class=\"item-info\">";
+                        output += "<i class=\"material-icons\">query_builder</i>";
+                        output += "<span class=\"my-itemdateadded\">" + items[i].dateadded + "</span>";
+                        output += "<i class=\"material-icons\">person</i>";
+                        output += "<span class=\"my-addedby\">rousso.eti</span>";
+                        output += "</div>";
+                        output += "</li>";
+                        output += "<hr />";
+                    }
+
                     $('#my-list-item').html(output);
 
                     $(".checkitem").click(function () {
@@ -89,6 +109,15 @@
                     });
                 }
             });
+
+            /*$.getJSON("eddy-lists-server/eddy-lists-getitems.php", {
+                accountname: "etienne",
+                pwd: "q",
+                idlist: "1"})
+            
+            .done (function (data) {
+                alert(data);
+            });*/
         }
 
         function showListItems(obj) {

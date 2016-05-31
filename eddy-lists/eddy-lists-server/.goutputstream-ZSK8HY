@@ -2,12 +2,10 @@
 
 include 'eddy-lists-config.php';
 
-
-header('Content-Type: application/json; charset=utf-8');
-
 $accountname = mysqli_real_escape_string($link, $_POST['accountname']);
 $pwd = mysqli_real_escape_string($link, $_POST['pwd']);
 $idlist = mysqli_real_escape_string($link, $_POST['idlist']);
+
 
 $fetch = mysqli_query($link, "SELECT it.itemname, it.iditem, it.dateadded 
 									     FROM items it
@@ -20,13 +18,17 @@ $fetch = mysqli_query($link, "SELECT it.itemname, it.iditem, it.dateadded
 										  	 AND an.pwd = SHA1('$pwd')"); 
 if (mysqli_num_rows($fetch) > 0)
 {
-  $itemarray = array();
-
 	while ($row = mysqli_fetch_assoc($fetch)) 
 	{
-	  $itemarray[] = $row;
-	}  
-  print json_encode(utf8ize($itemarray));
+	echo  '<li class="mylist">'; 
+	echo '<span class="mylistname">'; 
+	echo utf8_encode($row['itemname']);
+	echo '</span>';
+	echo '<span class="mylistdateadded">';
+	echo utf8_encode($row['dateadded']);
+	echo '</span>';
+	echo  "</li>";
+	}
 }
 else
 {
