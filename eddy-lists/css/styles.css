@@ -28,10 +28,9 @@ div[data-role="page"] {
 
 h2 {
     display: block;
-    color: #5A6D9F;
     padding: 4px 20px;
     margin: 0 -20px;
-    background-color: #9E83BE;
+    background-color: #5EC5F0;
     color: #fff;
     font-size: 14px;
     font-weight: 300;
@@ -44,7 +43,7 @@ header {
     right: 0;
     display: block;
     height: 39px;
-    background-color: #7958A0;
+    background-color: #22B3EB;
     width: 100%;
     text-align: center;
     color: #fff;
@@ -133,7 +132,7 @@ input {
 }
 
 .myButton {
-    background-color: #7958A0;
+    background-color: #89C732;
     color: #fff;    
     text-align: center;
     text-decoration: none;
@@ -416,18 +415,33 @@ hr {
 
 .checkitem {
     display: block;
-    position: relative;
     margin-top: -20px;
     font-size: 36px;
     position: absolute;
     right: 48px;
-    border:  1px solid #55769A;
+    border:  1px solid #89C732;
     width: 32px;
     height: 32px;
     border-radius: 42px;
 }
 
 .checkitemyes {
-    background-color: #55769A !important;
+    background-color: #89C732 !important;
     color: #fff;
 }
+
+.ui-dialog {
+    background-color: #fff;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    background-color: #22B3EB;
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #fff;
+}
+
+.ui-widget-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+ 

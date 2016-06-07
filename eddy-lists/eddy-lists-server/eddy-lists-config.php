@@ -1,7 +1,8 @@
 <?php
 
 
-$link = mysqli_connect("localhost", "eddySoft", "eddy$1511", "eddylists");	 
+$link = @mysqli_connect("192.168.1.51", "eddySoft", "eddy$1511", "eddylists") or die("500");	 
+echo "100";
 
     function utf8ize($d) {
         if (is_array($d)) {

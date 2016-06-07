@@ -16,7 +16,10 @@
 
 
     <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href="css/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui.min.css" rel="stylesheet" />
 
 
     <!-- à transférer dans un fichier JS plus tard -->
@@ -86,8 +89,7 @@
 
 
                     var output = "";
-                    for (var i in items)
-                    {
+                    for (var i in items) {
                         output = "<li class=\"my-list-item\">";
                         output += "<div class=\"item-name\">" + items[i].itemname + "</div>";
                         output += "<span class=\"checkitem\"></span>";
@@ -114,7 +116,7 @@
                 accountname: "etienne",
                 pwd: "q",
                 idlist: "1"})
-            
+
             .done (function (data) {
                 alert(data);
             });*/
@@ -139,6 +141,12 @@
             getSharedLists();
         }
 
+        function showAddList() {
+            $("#dialog").dialog(
+                { modal: true }
+                );
+        }
+
         $(document).ready(function () {
 
             $("body > div:not(:first-child)").hide();
@@ -157,6 +165,11 @@
             $("#paListItems").on("pagebeforeshow", function (event) {
                 var myID = $(this).data("id").replace("list-", "");
                 getItems(myID);
+            });
+
+            $("#btnAddList").on("click touchstart", function () {
+                alert("test");
+                showAddList();
             });
 
             getConnect();
@@ -195,7 +208,7 @@
     <div data-role="page" id="paListes">
         <header>
             eddyList
-            <div class="ajouter">
+            <div id="btnAddList" class="ajouter">
                 <i class="material-icons menu">add</i>
             </div>
         </header>
@@ -236,6 +249,11 @@
         <h2>Mes listes personnelles</h2>
         <ul data-role="listview" id="my-list-item"></ul>
 
+    </div>
+
+    <div id="dialog" title="Ajouter une liste">
+        <p>Nom de la nouvelle liste</p>
+        <input type="text" />
     </div>
 
 
